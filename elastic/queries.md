@@ -155,12 +155,28 @@ Search for values within nested objects
 ```
 
 # Exists Query
-Find documents where a field has a value
+Find documents where a field exist
 ```
 {
   "query": {
     "exists": {
       "field": "field_name"
+    }
+  }
+}
+```
+
+# Not Exists Query
+Find documents where a field does not exist
+```
+{
+  "query": {
+    "bool": {
+      "must_not": {
+        "exists": {
+          "field": "field_name"
+        }
+      }
     }
   }
 }
@@ -182,3 +198,24 @@ Find documents within a specific distance
 }
 ```
 
+# Bool Query
+Combine multiple queries using must, must_not, should, and filter
+```
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "field1": "value1" } },
+        { "match": { "field2": "value2" } }
+      ],
+      "filter": [
+        { "term": { "field3": "value3" } },
+        { "range": { "field4": { "gte": "value4" } } }
+      ]
+    }
+  }
+}
+```
+<b>must:</b> Ensures documents match the specified queries and contribute to the score.
+<br/>
+<b>filter:</b> Also ensures documents match specified queries but does not affect the score, making it faster and more efficient for binary conditions.
