@@ -1,5 +1,4 @@
 # Create Index
-
 ```
 PUT /my-index
 ```
