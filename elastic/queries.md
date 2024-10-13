@@ -1,5 +1,5 @@
 # Create Index
-```
+```elastic
 PUT /my-index
 ```
 
