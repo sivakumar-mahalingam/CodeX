@@ -1,5 +1,5 @@
 # Create Index
-```elastic
+```elasticsearch
 PUT /my-index
 ```
 
